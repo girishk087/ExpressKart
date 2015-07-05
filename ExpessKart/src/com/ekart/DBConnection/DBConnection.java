@@ -19,18 +19,8 @@ public class DBConnection {
 		catch (SQLException e) {
 			e.printStackTrace();
 		}
-		System.out.println("Connection inside DBConnection"+connection);
+		System.out.println("Connection inside DBConnection is successfull "+connection);
 		return connection;
 	}
 	
-	
-	
-	
-	
-	public static void main(String[] args) throws ClassNotFoundException, SQLException {
-		System.out.println("DB check");
-		DBConnection.getConnection();
-	}
-
-
 }

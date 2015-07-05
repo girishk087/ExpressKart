@@ -11,14 +11,15 @@ import com.ekart.DAO.RegisterDAO;
 import com.ekart.Services.RegisterService;
 import com.ekart.TO.RegisterTO;
 
+@SuppressWarnings("serial")
 public class ExpressKartServlet extends HttpServlet{
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String path = req.getServletPath();
 		System.out.println(path);
-		
-		if(path.equals("/Register.do")){
+		String path1 = "/Register.do";
+		if(path.equals(path1)){
 			RegisterTO registerTO = new RegisterTO();
 			registerTO.setUserID(0);
 			registerTO.setUserName("mmanjunath889@gmail.com");
@@ -27,8 +28,9 @@ public class ExpressKartServlet extends HttpServlet{
 			RegisterService registerService = new RegisterService();
 			boolean b = registerService.isRegistered(registerTO);
 			if(b==true){
-				
-			}
+				System.out.println("Registered successfully....!");
+			}else
+				System.out.println("Failed to register");
 			
 			
 		}else if(path.equals("")){

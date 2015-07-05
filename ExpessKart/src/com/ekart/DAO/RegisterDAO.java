@@ -9,6 +9,7 @@ import com.ekart.DBConnection.DBConnection;
 import com.ekart.TO.RegisterTO;
 
 public class RegisterDAO {
+	DBConnection connect;
 	Connection connection = null;
 	boolean flag;
 	public boolean registerUser(RegisterTO registerTO){
@@ -23,7 +24,7 @@ public class RegisterDAO {
 				boolean b = email.validate(userName);
 				if(b==true){
 					Statement statement = connection.createStatement();
-					int x = statement.executeUpdate("insert into user values('"+null+"','"+userName+"','"+mobileNum+"','"+password+"')");
+					int x = statement.executeUpdate("insert into user values(null,'"+userName+"','"+mobileNum+"','"+password+"')");
 					if(x==1){
 						flag = true;	
 					}
