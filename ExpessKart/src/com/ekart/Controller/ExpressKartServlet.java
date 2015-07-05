@@ -7,8 +7,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.ekart.DAO.LoginDAO;
 import com.ekart.DAO.RegisterDAO;
+import com.ekart.Services.LoginService;
 import com.ekart.Services.RegisterService;
+import com.ekart.TO.LoginTO;
 import com.ekart.TO.RegisterTO;
 
 @SuppressWarnings("serial")
@@ -19,7 +22,7 @@ public class ExpressKartServlet extends HttpServlet{
 		String path = req.getServletPath();
 		System.out.println(path);
 		String path1 = "/Register.do";
-		if(path.equals(path1)){
+		if(path.equals("/Regiter.do")){
 			RegisterTO registerTO = new RegisterTO();
 			registerTO.setUserID(0);
 			registerTO.setUserName("mmanjunath889@gmail.com");
@@ -33,8 +36,19 @@ public class ExpressKartServlet extends HttpServlet{
 				System.out.println("Failed to register");
 			
 			
-		}else if(path.equals("")){
-			
+		}else if(path.equals("/Login.do")){
+			LoginTO loginTO = new LoginTO();
+			loginTO.setUserName("mmanjunath889@gmail.com");
+			loginTO.setUserPassword("manju123");
+			loginTO.setMobileNumber("994572399");
+			LoginService loginService = new LoginService();
+			boolean b = loginService.isUserLoginValid(loginTO);
+			if(b==true){
+				System.out.println("welcome to ekart"+loginTO.getUserName());
+			}
+			else{
+				System.out.println("Login failed");
+			}
 		}else if(path.equals("")){
 			
 		}
